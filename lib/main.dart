@@ -47,6 +47,10 @@ class Container extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.pink,
       ),
+      backgroundColor: Colors.grey,
+      body: Center(
+        child: Text('data'),
+      ),
     );
   }
 }
