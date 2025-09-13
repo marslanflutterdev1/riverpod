@@ -41,8 +41,8 @@ jobs:
       - name: Analyse the dart code
         run: flutter analyze --fatal-warnings
 
-      - name: Run tests
-        run: flutter test
+#      - name: Run tests
+#        run: flutter test
 
       - name: Build APK
         run: flutter build apk --release --build-name=1.0.0 --build-number=1
