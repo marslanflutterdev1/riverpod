@@ -1,0 +1,41 @@
+name: Flutter - Android Build Dev
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+            distribution: 'temurin'
+            java-version: '21'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+            channel: 'stable'
+            flutter-version: 3.24.0
+
+      - name: Install dependence
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release --build-name=1.0.0 --build-number=1
+
+
+
+
+        
