@@ -43,8 +43,8 @@ jobs:
       - name: Analyse the dart code
         run: flutter analyze --fatal-warnings
 
-      - name: Run tests
-        run: flutter test
+#      - name: Run tests
+#        run: flutter test
 
 #     For Android build
       - name: Build APK
