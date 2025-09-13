@@ -3,11 +3,11 @@ name: Flutter - iOS Build Dev
 on:
   push:
     branches:
-      - main
+      - main-1
 
   pull_request:
     branches:
-      - main
+      - main-1
 
 
 jobs:
@@ -23,12 +23,29 @@ jobs:
           flutter-version: 3.27.2
           channel: 'stable'
 
+      - name: Install dependence
+        run: flutter pub get
 
       - name: Install iOS dependence
         run: |
           cd iOS
           pod install --repo-update
           cd ..
+
+      - name: Auto format the dart code
+        run: dart format .
+
+      - name: Verify the dart code is formated
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyse the dart code
+        run: flutter analyze --fatal-warnings
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build APK
+        run: flutter build apk --release --build-name=1.0.0 --build-number=1
 
       - name: Build iOS
         run: flutter build ios --release --build-name=1.0.0 --build-number=1 --no-codesign
