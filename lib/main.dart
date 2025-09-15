@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
         useMaterial3: true,
       ),
       home: Container(),
@@ -49,9 +49,41 @@ class Container extends StatelessWidget {
       ),
       backgroundColor: Colors.grey,
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Center(child: Text('data')),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(child: Text('data')),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(child: Text('data')),
+            ), Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(child: Text('data')),
+            ), Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(child: Text('data')),
+            ), Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(child: Text('data')),
+            ), Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(child: Text('data')),
+            ), Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(child: Text('data')),
+            ), Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(child: Text('data')),
+            ), Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(child: Text('data')),
+            ), Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(child: Text('data')),
+            ),
+          ],
         ),
       ),
     );
