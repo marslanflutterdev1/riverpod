@@ -49,7 +49,10 @@ class Container extends StatelessWidget {
       ),
       backgroundColor: Colors.grey,
       body: Center(
-        child: Text('data'),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(child: Text('data')),
+        ),
       ),
     );
   }
