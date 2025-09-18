@@ -64,25 +64,20 @@ class Container extends StatelessWidget {
             ), Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(child: Text('data')),
-            ), Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(child: Text('data')),
-            ), Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(child: Text('data')),
-            ), Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(child: Text('data')),
-            ), Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(child: Text('data')),
-            ), Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(child: Text('data')),
-            ), Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(child: Text('data')),
             ),
+
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(child: Text('data')),
+                ), Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(child: Text('data')),
+                ),
+              ],
+            )
+
           ],
         ),
       ),
