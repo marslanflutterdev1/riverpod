@@ -1,18 +1,68 @@
+#name: Flutter - Android Build Dev
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#  pull_request:
+#    branches:
+#      - main
+#
+#
+#jobs:
+#  build:
+#    runs-on: windows-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v5
+#
+#      - name: Set up JDK
+#        uses: actions/setup-java@v5
+#        with:
+#            distribution: 'temurin'
+#            java-version: '21'
+#
+#      - name: Set up Flutter
+#        uses: subosito/flutter-action@v2
+#        with:
+#            flutter-version: 3.27.2
+#            channel: 'stable'
+#
+#      - name: Install dependence
+#        run: flutter pub get
+#
+#      - name: Auto format the dart code
+#        run: dart format .
+#
+#      - name: Verify the dart code is formated
+#        run: dart format --output=none --set-exit-if-changed .
+#
+#      - name: Analyse the dart code
+#        run: flutter analyze --fatal-warnings
+#
+##      - name: Run tests
+##        run: flutter test
+#
+#      - name: Build APK
+#        run: flutter build apk --release --build-name=1.0.0 --build-number=1
+
+
+
+### llll
 name: Flutter - Android Build Dev
 
 on:
   push:
     branches:
       - main
-
   pull_request:
     branches:
       - main
 
-
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -20,29 +70,48 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v5
         with:
-            distribution: 'temurin'
-            java-version: '21'
+          distribution: 'temurin'
+          java-version: '17'
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-            flutter-version: 3.27.2
-            channel: 'stable'
+          flutter-version: 3.27.2
+          channel: 'stable'
 
-      - name: Install dependence
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Cache Flutter
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+          key: ${{ runner.os }}-flutter-${{ hashFiles('pubspec.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-flutter-
+
+      - name: Install dependencies
         run: flutter pub get
 
       - name: Auto format the dart code
         run: dart format .
 
-      - name: Verify the dart code is formated
+      - name: Verify the dart code is formatted
         run: dart format --output=none --set-exit-if-changed .
 
       - name: Analyse the dart code
         run: flutter analyze --fatal-warnings
 
-#      - name: Run tests
-#        run: flutter test
+      # - name: Run tests
+      #   run: flutter test
 
       - name: Build APK
         run: flutter build apk --release --build-name=1.0.0 --build-number=1
