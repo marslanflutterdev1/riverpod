@@ -3,16 +3,16 @@ name: Flutter - Android & iOS Build Dev
 on:
   push:
     branches:
-      - main_0
+      - main
 
   pull_request:
     branches:
-      - main_0
+      - main
 
 
 jobs:
   build:
-    runs-on: windows-latest   # This line mean that which os you want to execution
+    runs-on: ubuntu-latest   # This line mean that which os you want to execution
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -28,11 +28,11 @@ jobs:
         run: flutter pub get
 
 #     For iOS
-#      - name: Install iOS dependence
-#        run: |
-#          cd iOS
-#          pod install --repo-update
-#          cd ..
+      - name: Install iOS dependence
+        run: |
+          cd iOS
+          pod install --repo-update
+          cd ..
 
       - name: Auto format the dart code
         run: dart format .
@@ -51,8 +51,8 @@ jobs:
         run: flutter build apk --release --build-name=1.0.0 --build-number=1
 
 #     For iOS build
-#      - name: Build iOS
-#        run: flutter build ios --release --build-name=1.0.0 --build-number=1 --no-codesign
+      - name: Build iOS
+        run: flutter build ios --release --build-name=1.0.0 --build-number=1 --no-codesign
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
