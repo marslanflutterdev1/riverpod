@@ -51,8 +51,8 @@ jobs:
         run: flutter build apk --release --build-name=1.0.0 --build-number=1
 
 #     For iOS build
-      - name: Build iOS
-        run: flutter build ios --release --build-name=1.0.0 --build-number=1 --no-codesign
+#      - name: Build iOS
+#        run: flutter build ios --release --build-name=1.0.0 --build-number=1 --no-codesign
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
